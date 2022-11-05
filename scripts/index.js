@@ -26,6 +26,7 @@ let formElement = document.querySelector(".popup__container");
 function formSubmitHandler(evt) {
   evt.preventDefault();
   rename();
+  closePopup();
 }
 
 formElement.addEventListener("submit", formSubmitHandler);
