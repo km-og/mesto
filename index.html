@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Inessa Kim">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="popup">
+      <div class="popup__content">
+        <div class="popup__window">
+          <button class="popup__close-button button button-icon"></button>
+          <div class="popup__form">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__container">
+              <input type="text" class="popup__item popup__name" name="heading" placeholder="Имя" value="Жак-Ив Кусто">
+              <input type="text" class="popup__item popup__description" name="subheading" placeholder="О себе"
+                value="Исследователь океана">
+              <button type="submit" class="popup__save-button button">Сохранить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <img src="./images/header-logo.svg" alt="логотип" class="header__logo">
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <img src="./images/profile-avatar.png" alt="аватар" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__heading">
+            <h1 class="profile__name">2</h1>
+            <button class="profile__edit-button button button-icon">
+            </button>
+          </div>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button button button-icon">
+        </button>
+      </section>
+
+      <section>
+        <ul class="elements">
+          <li class="element">
+            <img src="./images/element-karachayevsk.png" alt="фото" class="element__photo">
+            <div class="element__subline">
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="element__like-button button button-like">
+              </button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/element-elbrus.png" alt="фото" class="element__photo">
+            <div class="element__subline">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__like-button button button-like">
+              </button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/element-dombay.png" alt="фото" class="element__photo">
+            <div class="element__subline">
+              <h2 class="element__title">Домбай</h2>
+              <button class="element__like-button button button-like">
+              </button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/element-elbrus.png" alt="фото" class="element__photo">
+            <div class="element__subline">
+              <h2 class="element__title">Гора Эльбрус</h2>
+              <button class="element__like-button button button-like">
+              </button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/element-dombay.png" alt="фото" class="element__photo">
+            <div class="element__subline">
+              <h2 class="element__title">Домбай</h2>
+              <button class="element__like-button button button-like">
+              </button>
+            </div>
+          </li>
+          <li class="element">
+            <img src="./images/element-karachayevsk.png" alt="фото" class="element__photo">
+            <div class="element__subline">
+              <h2 class="element__title">Карачаево-Черкессия</h2>
+              <button class="element__like-button button button-like">
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">&#169; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+
+  <script src="/scripts/index.js" defer></script>
+</body>
+
+</html>

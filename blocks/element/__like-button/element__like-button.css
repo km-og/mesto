@@ -1,0 +1,14 @@
+.element__like-button {
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: #ffffff;
+  padding: 0 12px 0;
+  background-image: url(../../../images/element-like-button.svg);
+  background-repeat: no-repeat;
+}
+
+.element__like-button:active {
+  background-image: url(../../../images/element-like-button-active.svg);
+  opacity: 1;
+}
