@@ -7,26 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Inessa Kim">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
+  <title>Место</title>
 </head>
 
-<body>
+<body class="body">
   <div class="page">
 
     <div class="popup">
       <div class="popup__content">
-        <div class="popup__window">
-          <button class="popup__close-button button button-icon"></button>
-          <div class="popup__form">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__container">
-              <input type="text" class="popup__item popup__name" name="heading" placeholder="Имя" value="Жак-Ив Кусто">
-              <input type="text" class="popup__item popup__description" name="subheading" placeholder="О себе"
-                value="Исследователь океана">
-              <button type="submit" class="popup__save-button button">Сохранить</button>
-            </form>
-          </div>
-        </div>
+        <button type="button" aria-label="Закрыть" class="popup__close-button button"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__container" name="forma" method="post">
+          <input type="text" class="popup__item popup_input-name" name="heading" placeholder="Имя" value="Жак-Ив Кусто">
+          <input type="text" class="popup__item popup_input-description" name="subheading" placeholder="О себе"
+            value="Исследователь океана">
+          <button type="submit" class="popup__save-button button">Сохранить</button>
+        </form>
       </div>
     </div>
 
@@ -40,62 +36,62 @@
         <div class="profile__info">
           <div class="profile__heading">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button button button-icon">
+            <button type="button" aria-label="Редактировать" class="profile__edit-button button">
             </button>
           </div>
           <p class="profile__description">Исследователь океана</p>
         </div>
-        <button class="profile__add-button button button-icon">
+        <button type="button" aria-label="Добавить" class="profile__add-button button">
         </button>
       </section>
 
-      <section>
-        <ul class="elements">
-          <li class="element">
-            <img src="./images/element-karachayevsk.png" alt="фото" class="element__photo">
-            <div class="element__subline">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like-button button button-like">
+      <section class="elements">
+        <ul class="elements__table">
+          <li class="elements__item">
+            <img src="./images/element-karachayevsk.png" alt="фото Карачаевск" class="elements__photo">
+            <div class="elements__subline">
+              <h2 class="elements__title">Карачаевск</h2>
+              <button type="button" aria-label="Нравится" class="elements__like-button button">
               </button>
             </div>
           </li>
-          <li class="element">
-            <img src="./images/element-elbrus.png" alt="фото" class="element__photo">
-            <div class="element__subline">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like-button button button-like">
+          <li class="elements__item">
+            <img src="./images/element-elbrus.png" alt="фото Эльбрус" class="elements__photo">
+            <div class="elements__subline">
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button type="button" aria-label="Нравится" class="elements__like-button button">
               </button>
             </div>
           </li>
-          <li class="element">
-            <img src="./images/element-dombay.png" alt="фото" class="element__photo">
-            <div class="element__subline">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like-button button button-like">
+          <li class="elements__item">
+            <img src="./images/element-dombay.png" alt="фото Домбай" class="elements__photo">
+            <div class="elements__subline">
+              <h2 class="elements__title">Домбай</h2>
+              <button type="button" aria-label="Нравится" class="elements__like-button button">
               </button>
             </div>
           </li>
-          <li class="element">
-            <img src="./images/element-elbrus.png" alt="фото" class="element__photo">
-            <div class="element__subline">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like-button button button-like">
+          <li class="elements__item">
+            <img src="./images/element-elbrus.png" alt="фото Эльбрус" class="elements__photo">
+            <div class="elements__subline">
+              <h2 class="elements__title">Гора Эльбрус</h2>
+              <button type="button" aria-label="Нравится" class="elements__like-button button">
               </button>
             </div>
           </li>
-          <li class="element">
-            <img src="./images/element-dombay.png" alt="фото" class="element__photo">
-            <div class="element__subline">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like-button button button-like">
+          <li class="elements__item">
+            <img src="./images/element-dombay.png" alt="фото Домбай" class="elements__photo">
+            <div class="elements__subline">
+              <h2 class="elements__title">Домбай</h2>
+              <button type="button" aria-label="Нравится" class="elements__like-button button">
               </button>
             </div>
           </li>
-          <li class="element">
-            <img src="./images/element-karachayevsk.png" alt="фото" class="element__photo">
-            <div class="element__subline">
-              <h2 class="element__title">Карачаево-Черкессия</h2>
-              <button class="element__like-button button button-like">
+          <li class="elements__item">
+            <img src="./images/element-karachayevsk.png" alt="фото Карачаево-Черкессия" class="elements__photo">
+            <div class="elements__subline">
+              <h2 class="elements__title">Карачаево-Черкессия</h2>
+              <button type="button" aria-label="Нравится" class="elements__like-button button">
               </button>
             </div>
           </li>
@@ -104,7 +100,7 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__text">&#169; 2020 Mesto Russia</p>
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
 

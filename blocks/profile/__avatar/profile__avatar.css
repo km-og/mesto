@@ -3,12 +3,11 @@
   height: 120px;
   margin: 0;
   padding-right: 30px;
+  border-radius: 100px;
 }
 @media screen and (max-width: 767px) {
   .profile__avatar {
     margin: 0 auto;
     padding: 14px 0 0;
-    width: 120px;
-    height: 120px;
   }
 }

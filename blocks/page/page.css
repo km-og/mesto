@@ -2,10 +2,10 @@
   min-width: 768px;
   margin: 0 auto;
   padding: 0;
-  background-color: #000000;
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  flex: auto;
 }
 
 @media screen and (max-width: 767px) {

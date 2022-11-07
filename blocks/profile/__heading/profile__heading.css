@@ -5,7 +5,7 @@
 @media screen and (max-width: 767px) {
   .profile__heading {
     margin: 0 auto;
-    width: 223px;
+    max-width: 223px;
     padding-left: 35px;
   }
 }

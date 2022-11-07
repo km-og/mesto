@@ -4,6 +4,8 @@
   padding-top: 23px;
   font-size: 42px;
   font-weight: 500;
+  line-height: 1.1;
+  max-width: 294px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -15,5 +17,6 @@
     font-size: 27px;
     line-height: 1.2;
     padding-right: 10px;
+    max-width: 189px;
   }
 }
