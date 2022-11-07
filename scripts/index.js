@@ -1,9 +1,9 @@
 let editButton = document.querySelector(".profile__edit-button");
 let popup = document.querySelector(".popup");
 let closeButton = document.querySelector(".popup__close-button");
-let namePopup = document.querySelector(".popup__item_name");
+let namePopup = document.querySelector(".popup__item_type_name");
 let nameProfile = document.querySelector(".profile__name");
-let descriptionPopup = document.querySelector(".popup__item_description");
+let descriptionPopup = document.querySelector(".popup__item_type_description");
 let descriptionProfile = document.querySelector(".profile__description");
 
 function openPopup() {
