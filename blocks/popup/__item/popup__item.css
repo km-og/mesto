@@ -10,3 +10,21 @@
 .popup__item:focus {
   outline-color: #248ed5;
 }
+
+.popup__item:first-child {
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.popup__item:nth-child(2) {
+  margin-top: 21px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__item:first-child {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+}

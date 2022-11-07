@@ -16,7 +16,8 @@
     padding-top: 27px;
     font-size: 27px;
     line-height: 1.2;
-    padding-right: 10px;
+    padding-right: 11px;
     max-width: 189px;
+    margin-left: -10px;
   }
 }
