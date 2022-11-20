@@ -62,9 +62,25 @@ const likeButton = (evt) => {
     .classList.toggle("elements__like-button_type_active");
   evt.target.closest("button").classList.toggle("elements__like-button");
 };
+
 const deleteButton = (evt) => {
   evt.target.closest(".elements__item").remove();
 };
+
+const popupImg = document.querySelector(".popup-img");
+const popupImgLink = document.querySelector(".popup-img__image");
+const popupImgName = document.querySelector(".popup-img__name");
+
+const openImg = (item) => {
+  popupImg.classList.add("popup-img_opened");
+  popupImgLink.src = item.link;
+  popupImgName.textContent = item.name;
+};
+
+function closeImg() {
+  popupImg.classList.remove("popup-img_opened");
+}
+
 function addElement(item) {
   const elementsTemplate = document.querySelector(
     "#elements__template"
@@ -72,15 +88,21 @@ function addElement(item) {
   const newElement = elementsTemplate
     .querySelector(".elements__item")
     .cloneNode(true);
+
   newElement.querySelector(".elements__title").textContent = item.name;
   newElement.querySelector(".elements__photo").src = item.link;
 
-  const like = document.querySelector(".elements__like-button");
-  like.addEventListener("click", likeButton);
-
-  const deleteBtn = document.querySelector(".elements__delete-button");
+  const deleteBtn = newElement.querySelector(".elements__delete-button");
   deleteBtn.addEventListener("click", deleteButton);
 
+  const likeBtn = newElement.querySelector(".elements__like-button");
+  likeBtn.addEventListener("click", likeButton);
+
+  const previewImg = newElement.querySelector(".elements__photo");
+  previewImg.addEventListener("click", () => openImg(item));
+
+  const closePreviewImg = document.querySelector(".popup-img__close-button");
+  closePreviewImg.addEventListener("click", closeImg);
   return newElement;
 }
 
