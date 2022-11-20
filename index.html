@@ -27,6 +27,19 @@
       </div>
     </div>
 
+    <div class="popup-add">
+      <div class="popup-add__content">
+        <button type="button" aria-label="Закрыть" class="popup-add__close-button button"></button>
+        <h2 class="popup-add__title">Новое место</h2>
+        <form class="popup-add__container" name="forma" method="post">
+          <input type="text" class="popup-add__item popup-add__item_type_name" name="heading" placeholder="Название">
+          <input type="text" class="popup-add__item popup-add__item_type_link" name="subheading"
+            placeholder="Ссылка на картинку">
+          <button type="submit" class="popup-add__save-button button">Создать</button>
+        </form>
+      </div>
+    </div>
+
     <header class="header">
       <img src="./images/header-logo.svg" alt="логотип" class="header__logo">
     </header>
@@ -49,7 +62,11 @@
       <section class="elements">
         <ul class="elements__table">
           <li class="elements__item">
-            <img src="./images/element-karachayevsk.png" alt="фото Карачаевск" class="elements__photo">
+            <div class="elements__card">
+              <button type="button" aria-label="Удалить" class="elements__delete-button button">
+              </button>
+              <img src="./images/element-karachayevsk.png" alt="фото Карачаевск" class="elements__photo">
+            </div>
             <div class="elements__subline">
               <h2 class="elements__title">Карачаевск</h2>
               <button type="button" aria-label="Нравится" class="elements__like-button button">
@@ -57,7 +74,11 @@
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-elbrus.png" alt="фото Эльбрус" class="elements__photo">
+            <div class="elements__card">
+              <button type="button" aria-label="Удалить" class="elements__delete-button button">
+              </button>
+              <img src="./images/element-elbrus.png" alt="фото Эльбрус" class="elements__photo">
+            </div>
             <div class="elements__subline">
               <h2 class="elements__title">Гора Эльбрус</h2>
               <button type="button" aria-label="Нравится" class="elements__like-button button">
@@ -65,7 +86,11 @@
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-dombay.png" alt="фото Домбай" class="elements__photo">
+            <div class="elements__card">
+              <button type="button" aria-label="Удалить" class="elements__delete-button button">
+              </button>
+              <img src="./images/element-dombay.png" alt="фото Домбай" class="elements__photo">
+            </div>
             <div class="elements__subline">
               <h2 class="elements__title">Домбай</h2>
               <button type="button" aria-label="Нравится" class="elements__like-button button">
@@ -73,7 +98,11 @@
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-elbrus.png" alt="фото Эльбрус" class="elements__photo">
+            <div class="elements__card">
+              <button type="button" aria-label="Удалить" class="elements__delete-button button">
+              </button>
+              <img src="./images/element-elbrus.png" alt="фото Эльбрус" class="elements__photo">
+            </div>
             <div class="elements__subline">
               <h2 class="elements__title">Гора Эльбрус</h2>
               <button type="button" aria-label="Нравится" class="elements__like-button button">
@@ -81,7 +110,11 @@
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-dombay.png" alt="фото Домбай" class="elements__photo">
+            <div class="elements__card">
+              <button type="button" aria-label="Удалить" class="elements__delete-button button">
+              </button>
+              <img src="./images/element-dombay.png" alt="фото Домбай" class="elements__photo">
+            </div>
             <div class="elements__subline">
               <h2 class="elements__title">Домбай</h2>
               <button type="button" aria-label="Нравится" class="elements__like-button button">
@@ -89,7 +122,11 @@
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-karachayevsk.png" alt="фото Карачаево-Черкессия" class="elements__photo">
+            <div class="elements__card">
+              <button type="button" aria-label="Удалить" class="elements__delete-button button">
+              </button>
+              <img src="./images/element-karachayevsk.png" alt="фото Карачаево-Черкессия" class="elements__photo">
+            </div>
             <div class="elements__subline">
               <h2 class="elements__title">Карачаево-Черкессия</h2>
               <button type="button" aria-label="Нравится" class="elements__like-button button">
@@ -105,7 +142,24 @@
     </footer>
   </div>
 
+  <template id="elements__template">
+    <li class="elements__item">
+      <div class="elements__card">
+        <button type="button" aria-label="Удалить" class="elements__delete-button button">
+        </button>
+        <img src="" class="elements__photo">
+      </div>
+      <div class="elements__subline">
+        <h2 class="elements__title"></h2>
+        <button type="button" aria-label="Нравится" class="elements__like-button button">
+        </button>
+
+      </div>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>
