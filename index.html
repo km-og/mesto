@@ -13,7 +13,7 @@
 <body class="body">
   <div class="page">
 
-    <div class="popup">
+    <div class="popup popup-profile">
       <div class="popup__content">
         <button type="button" aria-label="Закрыть" class="popup__close-button button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -27,22 +27,22 @@
       </div>
     </div>
 
-    <div class="popup-add">
-      <div class="popup-add__content">
-        <button type="button" aria-label="Закрыть" class="popup-add__close-button button"></button>
-        <h2 class="popup-add__title">Новое место</h2>
-        <form class="popup-add__container" name="forma" method="post">
-          <input type="text" class="popup-add__item popup-add__item_type_name" name="heading" placeholder="Название">
-          <input type="text" class="popup-add__item popup-add__item_type_link" name="subheading"
+    <div class="popup popup-add">
+      <div class="popup__content">
+        <button type="button" aria-label="Закрыть" class="popup__close-button button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__container" name="forma" method="post">
+          <input type="text" class="popup__item popup__item_type_name" name="heading" placeholder="Название">
+          <input type="text" class="popup__item popup__item_type_link" name="subheading"
             placeholder="Ссылка на картинку">
-          <button type="submit" class="popup-add__save-button button">Создать</button>
+          <button type="submit" class="popup__save-button button">Создать</button>
         </form>
       </div>
     </div>
 
-    <div class="popup-img">
+    <div class="popup popup-img">
       <div class="popup-img__content">
-        <button type="button" aria-label="Закрыть" class="popup-img__close-button button"></button>
+        <button type="button" aria-label="Закрыть" class="popup__close-button button"></button>
         <img class="popup-img__image">
         <p class="popup-img__name"></p>
       </div>
