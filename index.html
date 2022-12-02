@@ -17,11 +17,14 @@
       <div class="popup__content">
         <button type="button" aria-label="Закрыть" class="popup__close-button button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__container" name="forma" method="post">
-          <input type="text" class="popup__item popup__item_type_name" name="heading" placeholder="Имя"
-            value="Жак-Ив Кусто">
-          <input type="text" class="popup__item popup__item_type_description" name="subheading" placeholder="О себе"
-            value="Исследователь океана">
+        <form class="popup__container" name="edit-forma" method="post" novalidate>
+          <input id="name-input" type="text" class="popup__item popup__item_type_name" name="edit-heading"
+            placeholder="Имя" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
+          <span class="popup__error name-input-error"></span>
+          <input id="description-input" type="text" class="popup__item popup__item_type_description"
+            name="edit-subheading" placeholder="О себе" value="Исследователь океана" required minlength="2"
+            maxlength="200">
+          <span class="popup__error description-input-error"></span>
           <button type="submit" class="popup__save-button button">Сохранить</button>
         </form>
       </div>
@@ -31,10 +34,13 @@
       <div class="popup__content">
         <button type="button" aria-label="Закрыть" class="popup__close-button button"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__container" name="forma" method="post">
-          <input type="text" class="popup__item popup__item_type_name" name="heading" placeholder="Название">
-          <input type="text" class="popup__item popup__item_type_link" name="subheading"
-            placeholder="Ссылка на картинку">
+        <form class="popup__container" name="add-forma" method="post" novalidate>
+          <input id="title-input" type="text" class="popup__item popup__item_type_name" name="add-heading"
+            placeholder="Название" required minlength="2" maxlength="30">
+          <span class="popup__error title-input-error"></span>
+          <input id="link-input" type="url" class="popup__item popup__item_type_link" name="add-subheading"
+            placeholder="Ссылка на картинку" required>
+          <span class="popup__error link-input-error"></span>
           <button type="submit" class="popup__save-button button">Создать</button>
         </form>
       </div>
@@ -167,6 +173,7 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 
 </body>
 

@@ -8,6 +8,7 @@ const descriptionPopup = popupProfile.querySelector(
   ".popup__item_type_description"
 );
 const descriptionProfile = document.querySelector(".profile__description");
+const profileForm = popupProfile.querySelector(".popup__container");
 
 // открыть попап
 
@@ -24,7 +25,18 @@ function closePopup(popup) {
 const closeButtons = document.querySelectorAll(".popup__close-button");
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
+  popup.addEventListener("click", (evt) => {
+    const isOverlay = evt.target.classList.contains("popup");
+
+    if (isOverlay) {
+      popup.classList.remove("popup_opened");
+    }
+  });
+  document.addEventListener("keydown", (evt) => {
+    if (evt.code === "Escape") {
+      popup.classList.remove("popup_opened");
+    }
+  });
 });
 
 // редактировать профиль
@@ -38,7 +50,6 @@ editButton.addEventListener("click", openPopupProfile);
 
 // отображение в полях формы значения профиля
 
-const profileForm = popupProfile.querySelector(".popup__container");
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   nameProfile.textContent = namePopup.value;
