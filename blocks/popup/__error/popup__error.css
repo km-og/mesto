@@ -4,5 +4,6 @@
   font-weight: 400;
   line-height: 1.2;
   opacity: 0;
-  margin-top: 5px;
+  position: absolute;
+  top: calc(100% + 5px);
 }

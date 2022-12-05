@@ -9,35 +9,56 @@ const descriptionPopup = popupProfile.querySelector(
 );
 const descriptionProfile = document.querySelector(".profile__description");
 const profileForm = popupProfile.querySelector(".popup__container");
+const popups = document.querySelectorAll(".popup");
+const elementsTable = document.querySelector(".elements__table");
+// переменные для карточек
+const popupImg = document.querySelector(".popup-img");
+const popupImgLink = popupImg.querySelector(".popup-img__image");
+const popupImgName = popupImg.querySelector(".popup-img__name");
+// попап добавления карточек
+const addButton = document.querySelector(".profile__add-button");
+const popupAdd = document.querySelector(".popup-add");
+const popupAddCloseBtn = popupAdd.querySelector(".popup__close-button");
+const namePopupAdd = popupAdd.querySelector(".popup__item_type_name");
+const linkPopupAdd = popupAdd.querySelector(".popup__item_type_link");
+const addForm = popupAdd.querySelector(".popup__container");
+
+// закрытие по нажатию на Esc
+
+function closeByEsc(evt) {
+  if (evt.code === "Escape") {
+    closePopup(popupProfile);
+    closePopup(popupAdd);
+    closePopup(popupImg);
+  }
+}
+
+// закрытие по нажатию на оверлей
+
+const popupsArray = popups.forEach((popupItem) => {
+  const popupOverlay = popupItem.closest(".popup");
+  popupItem.addEventListener("click", (evt) => {
+    const isOverlay = evt.target.classList.contains("popup");
+    const isClose = evt.target.classList.contains("popup__close-button");
+    if (isOverlay || isClose) {
+      closePopup(popupOverlay);
+    }
+  });
+});
 
 // открыть попап
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closeByEsc);
 }
 
 // закрыть попап
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeByEsc);
 }
-
-const closeButtons = document.querySelectorAll(".popup__close-button");
-closeButtons.forEach((button) => {
-  const popup = button.closest(".popup");
-  popup.addEventListener("click", (evt) => {
-    const isOverlay = evt.target.classList.contains("popup");
-
-    if (isOverlay) {
-      popup.classList.remove("popup_opened");
-    }
-  });
-  document.addEventListener("keydown", (evt) => {
-    if (evt.code === "Escape") {
-      popup.classList.remove("popup_opened");
-    }
-  });
-});
 
 // редактировать профиль
 
@@ -58,37 +79,6 @@ function handleProfileFormSubmit(evt) {
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-// значения карточек из коробки
-
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-const elementsTable = document.querySelector(".elements__table");
-
 // лайк карточки
 
 const toggleLike = (evt) => {
@@ -101,13 +91,7 @@ const deleteCard = (evt) => {
   evt.target.closest(".elements__item").remove();
 };
 
-// переменные для карточек
-
-const popupImg = document.querySelector(".popup-img");
-const popupImgLink = popupImg.querySelector(".popup-img__image");
-const popupImgName = popupImg.querySelector(".popup-img__name");
-
-// открыть попапа с картинкой
+// открыть попап с картинкой
 
 const openImg = (item) => {
   openPopup(popupImg);
@@ -150,14 +134,6 @@ const renderElement = (item) => {
 
 initialCards.forEach(renderElement);
 
-// попап добавления карточек
-
-const addButton = document.querySelector(".profile__add-button");
-const popupAdd = document.querySelector(".popup-add");
-const popupAddCloseBtn = popupAdd.querySelector(".popup__close-button");
-const namePopupAdd = popupAdd.querySelector(".popup__item_type_name");
-const linkPopupAdd = popupAdd.querySelector(".popup__item_type_link");
-
 // открыть форму добавления карточек
 
 function openPopupAdd() {
@@ -167,11 +143,11 @@ addButton.addEventListener("click", openPopupAdd);
 
 // добавление карточки через форму
 
-const addForm = popupAdd.querySelector(".popup__container");
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
   renderElement({ name: namePopupAdd.value, link: linkPopupAdd.value });
   evt.target.reset();
   closePopup(popupAdd);
+  enableValidation(obj);
 };
 addForm.addEventListener("submit", handleAddFormSubmit);
