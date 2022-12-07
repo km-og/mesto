@@ -26,22 +26,20 @@ const addForm = popupAdd.querySelector(".popup__container");
 // закрытие по нажатию на Esc
 
 function closeByEsc(evt) {
+  const popupOpen = document.querySelector(".popup_opened");
   if (evt.code === "Escape") {
-    closePopup(popupProfile);
-    closePopup(popupAdd);
-    closePopup(popupImg);
+    closePopup(popupOpen);
   }
 }
 
 // закрытие по нажатию на оверлей
 
-const popupsArray = popups.forEach((popupItem) => {
-  const popupOverlay = popupItem.closest(".popup");
+popups.forEach((popupItem) => {
   popupItem.addEventListener("click", (evt) => {
     const isOverlay = evt.target.classList.contains("popup");
     const isClose = evt.target.classList.contains("popup__close-button");
     if (isOverlay || isClose) {
-      closePopup(popupOverlay);
+      closePopup(popupItem);
     }
   });
 });
@@ -148,6 +146,5 @@ const handleAddFormSubmit = (evt) => {
   renderElement({ name: namePopupAdd.value, link: linkPopupAdd.value });
   evt.target.reset();
   closePopup(popupAdd);
-  enableValidation(obj);
 };
 addForm.addEventListener("submit", handleAddFormSubmit);

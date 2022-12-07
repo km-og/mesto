@@ -2,17 +2,17 @@
 
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(`${obj.inputErrorClass}`);
+  inputElement.classList.add(`${validationConfig.inputErrorClass}`);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(`${obj.errorClass}`);
+  errorElement.classList.add(`${validationConfig.errorClass}`);
 };
 
 // удалить класс с ошибкой
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(`${obj.inputErrorClass}`);
-  errorElement.classList.remove(`${obj.errorClass}`);
+  inputElement.classList.remove(`${validationConfig.inputErrorClass}`);
+  errorElement.classList.remove(`${validationConfig.errorClass}`);
   errorElement.textContent = "";
 };
 
@@ -38,10 +38,10 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(`${obj.inactiveButtonClass}`);
+    buttonElement.classList.add(`${validationConfig.inactiveButtonClass}`);
     buttonElement.setAttribute("disabled", true);
   } else {
-    buttonElement.classList.remove(`${obj.inactiveButtonClass}`);
+    buttonElement.classList.remove(`${validationConfig.inactiveButtonClass}`);
     buttonElement.removeAttribute("disabled");
   }
 };
@@ -50,10 +50,10 @@ const toggleButtonState = (inputList, buttonElement) => {
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(
-    formElement.querySelectorAll(`${obj.inputSelector}`)
+    formElement.querySelectorAll(`${validationConfig.inputSelector}`)
   );
   const buttonElement = formElement.querySelector(
-    `${obj.submitButtonSelector}`
+    `${validationConfig.submitButtonSelector}`
   );
 
   toggleButtonState(inputList, buttonElement);
@@ -70,7 +70,7 @@ const setEventListeners = (formElement) => {
 
 // поиск и перебор всех форм на странице
 
-const obj = {
+const validationConfig = {
   formSelector: ".popup__container",
   inputSelector: ".popup__item",
   submitButtonSelector: ".popup__save-button",
@@ -79,14 +79,17 @@ const obj = {
   errorClass: "popup__error_type_active",
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(`${obj.formSelector}`));
+function enableValidation(validationConfig) {
+  const formList = Array.from(
+    document.querySelectorAll(`${validationConfig.formSelector}`)
+  );
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      setEventListeners(formElement);
     });
     setEventListeners(formElement);
   });
-};
+}
 
-enableValidation(obj);
+enableValidation(validationConfig);
