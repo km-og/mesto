@@ -1,96 +1,88 @@
-const validationConfig = {
-  formSelector: ".popup__container",
-  inputSelector: ".popup__item",
-  submitButtonSelector: ".popup__save-button",
-  inactiveButtonClass: "popup__save-button_type_inactive",
-  inputErrorClass: "popup__item_type_error",
-  errorClass: "popup__error_type_active",
-};
+// // добавить класс с ошибкой
+// import { FormValidator } from "./FormValidator.js";
 
-// добавить класс с ошибкой
+// const showInputError = (formElement, inputElement, errorMessage, config) => {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//   inputElement.classList.add(config.inputErrorClass);
+//   errorElement.textContent = errorMessage;
+//   errorElement.classList.add(config.errorClass);
+// };
 
-const showInputError = (formElement, inputElement, errorMessage, config) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(config.inputErrorClass);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(config.errorClass);
-};
+// // удалить класс с ошибкой
 
-// удалить класс с ошибкой
+// const hideInputError = (formElement, inputElement, config) => {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//   inputElement.classList.remove(config.inputErrorClass);
+//   errorElement.classList.remove(config.errorClass);
+//   errorElement.textContent = "";
+// };
 
-const hideInputError = (formElement, inputElement, config) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
-  errorElement.textContent = "";
-};
+// //проверка валидности поля
 
-//проверка валидности поля
+// const isValid = (formElement, inputElement, config) => {
+//   if (!inputElement.validity.valid) {
+//     showInputError(
+//       formElement,
+//       inputElement,
+//       inputElement.validationMessage,
+//       config
+//     );
+//   } else {
+//     hideInputError(formElement, inputElement, config);
+//   }
+// };
 
-const isValid = (formElement, inputElement, config) => {
-  if (!inputElement.validity.valid) {
-    showInputError(
-      formElement,
-      inputElement,
-      inputElement.validationMessage,
-      config
-    );
-  } else {
-    hideInputError(formElement, inputElement, config);
-  }
-};
+// // проверка на наличие невалидного поля
 
-// проверка на наличие невалидного поля
+// const hasInvalidInput = (inputList) => {
+//   return inputList.some((inputElement) => {
+//     return !inputElement.validity.valid;
+//   });
+// };
 
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
+// // отключение кнопки
 
-// отключение кнопки
+// const toggleButtonState = (inputList, buttonElement, config) => {
+//   if (hasInvalidInput(inputList)) {
+//     buttonElement.classList.add(config.inactiveButtonClass);
+//     buttonElement.setAttribute("disabled", true);
+//   } else {
+//     buttonElement.classList.remove(config.inactiveButtonClass);
+//     buttonElement.removeAttribute("disabled");
+//   }
+// };
 
-const toggleButtonState = (inputList, buttonElement, config) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.setAttribute("disabled", true);
-  } else {
-    buttonElement.classList.remove(config.inactiveButtonClass);
-    buttonElement.removeAttribute("disabled");
-  }
-};
+// // принимает элемент формы и добавляет полям нужные обработчики
 
-// принимает элемент формы и добавляет полям нужные обработчики
+// const setEventListeners = (formElement, config) => {
+//   const inputList = Array.from(
+//     formElement.querySelectorAll(config.inputSelector)
+//   );
+//   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-const setEventListeners = (formElement, config) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(config.inputSelector)
-  );
-  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+//   toggleButtonState(inputList, buttonElement, config);
 
-  toggleButtonState(inputList, buttonElement, config);
+//   inputList.forEach((inputElement) => {
+//     inputElement.addEventListener("input", () => {
+//       isValid(formElement, inputElement, config);
 
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      isValid(formElement, inputElement, config);
+//       toggleButtonState(inputList, buttonElement, config);
+//     });
+//   });
+//   toggleButtonState(inputList, buttonElement, config);
+// };
 
-      toggleButtonState(inputList, buttonElement, config);
-    });
-  });
-  toggleButtonState(inputList, buttonElement, config);
-};
+// // поиск и перебор всех форм на странице
 
-// поиск и перебор всех форм на странице
+// function enableValidation(config) {
+//   const formList = Array.from(document.querySelectorAll(config.formSelector));
+//   formList.forEach((formElement) => {
+//     formElement.addEventListener("submit", (evt) => {
+//       evt.preventDefault();
+//       setEventListeners(formElement, config);
+//     });
+//     setEventListeners(formElement, config);
+//   });
+// }
 
-function enableValidation(config) {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      setEventListeners(formElement, config);
-    });
-    setEventListeners(formElement, config);
-  });
-}
-
-enableValidation(validationConfig);
+// enableValidation(validationConfig);
