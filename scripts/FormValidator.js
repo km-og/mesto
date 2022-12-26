@@ -82,10 +82,6 @@ class FormValidator {
   // включение валидации формы
 
   enableValidation() {
-    // this._formElement.addEventListener("submit", (evt) => {
-    //   evt.preventDefault();
-    //   this._setEventListeners();
-    // });
     this._setEventListeners();
   }
 }

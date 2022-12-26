@@ -1,12 +1,15 @@
-import { openPopup, popupImg, popupImgLink, popupImgName } from "./index.js";
+import { openPopup } from "./utils.js";
 
 // класс создания карточки с текстом и ссылком на изображение
 
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, popupImg, popupImgLink, popupImgName) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._popupImg = popupImg;
+    this._popupImgLink = popupImgLink;
+    this._popupImgName = popupImgName;
   }
 
   _getTemplate() {
@@ -24,6 +27,7 @@ class Card {
 
     this._element.querySelector(".elements__title").textContent = this._name;
     this._element.querySelector(".elements__photo").src = this._link;
+    this._element.querySelector(".elements__photo").alt = this._name;
 
     return this._element;
   }
@@ -39,10 +43,10 @@ class Card {
   }
 
   _openImg() {
-    openPopup(popupImg);
-    popupImgLink.src = this._link;
-    popupImgLink.alt = this._name;
-    popupImgName.textContent = this._name;
+    openPopup(this._popupImg);
+    this._popupImgLink.src = this._link;
+    this._popupImgLink.alt = this._name;
+    this._popupImgName.textContent = this._name;
   }
 
   _setEventListeners() {
