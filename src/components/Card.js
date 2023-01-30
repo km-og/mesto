@@ -1,15 +1,11 @@
-import { openPopup } from "./utils.js";
-
-// класс создания карточки с текстом и ссылком на изображение
+// класс создания карточки с текстом и ссылкой на изображение
 
 class Card {
-  constructor(data, templateSelector, popupImg, popupImgLink, popupImgName) {
+  constructor(data, templateSelector, { handleCardClick }) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._popupImg = popupImg;
-    this._popupImgLink = popupImgLink;
-    this._popupImgName = popupImgName;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -43,10 +39,7 @@ class Card {
   }
 
   _openImg() {
-    openPopup(this._popupImg);
-    this._popupImgLink.src = this._link;
-    this._popupImgLink.alt = this._name;
-    this._popupImgName.textContent = this._name;
+    this._handleCardClick(this._name, this._link);
   }
 
   _setEventListeners() {
