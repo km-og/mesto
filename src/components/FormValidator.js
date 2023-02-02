@@ -79,6 +79,16 @@ class FormValidator {
     });
   }
 
+  // очистка ошибок, если пользователь не сохранил неправильные значения полей
+
+  resetValidaion() {
+    this._toggleButtonState();
+
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
+
   // включение валидации формы
 
   enableValidation() {
