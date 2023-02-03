@@ -34,4 +34,13 @@ export class PopupWithForm extends Popup {
       this.close();
     });
   }
+
+  // метод вставляет данные в инпуты
+
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
+      input.value = data[input.name];
+    });
+  }
 }

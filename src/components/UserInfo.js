@@ -7,8 +7,8 @@ export class UserInfo {
   }
   getUserInfo() {
     this._profileInfo = {};
-    this._profileInfo.name = this._nameProfile.textContent;
-    this._profileInfo.description = this._descriptionProfile.textContent;
+    this._profileInfo.editHeading = this._nameProfile.textContent;
+    this._profileInfo.editSubheading = this._descriptionProfile.textContent;
 
     return this._profileInfo;
   }

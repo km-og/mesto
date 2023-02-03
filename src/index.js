@@ -19,35 +19,43 @@ import { UserInfo } from "./components/UserInfo.js";
 import { FormValidator } from "./components/FormValidator.js";
 
 // отображение в полях формы значения профиля
+
 const newProfileInfo = new UserInfo({
   nameProfile: ".profile__name",
   descriptionProfile: ".profile__description",
 });
 
+// попап редактирования профиля
+
+const handleProfileFormSubmit = new PopupWithForm({
+  popup: ".popup-profile",
+  handleFormSubmit: (formData) => {
+    newProfileInfo.setUserInfo(formData);
+  },
+});
+
+handleProfileFormSubmit.setEventListeners();
+
+// открыть попап редактирования профиля
+
 function openPopupProfile() {
-  const handleProfileFormSubmit = new PopupWithForm({
-    popup: ".popup-profile",
-    handleFormSubmit: (formData) => {
-      newProfileInfo.setUserInfo(formData);
-    },
-  });
-
   handleProfileFormSubmit.open();
-  handleProfileFormSubmit.setEventListeners();
-
   newProfileInfo.getUserInfo();
-  namePopup.value = newProfileInfo.getUserInfo().name;
-  descriptionPopup.value = newProfileInfo.getUserInfo().description;
+  const infoObject = newProfileInfo.getUserInfo();
 
-  // валидация формы профиля
-
-  const formValidatorForProfile = new FormValidator(
-    validationConfig,
-    popupProfile
-  );
-  formValidatorForProfile.enableValidation();
-  formValidatorForProfile.resetValidaion();
+  handleProfileFormSubmit.setInputValues(infoObject);
+  // namePopup.value = infoObject.name;
+  // descriptionPopup.value = infoObject.description;
 }
+
+// валидация формы профиля
+
+const formValidatorForProfile = new FormValidator(
+  validationConfig,
+  popupProfile
+);
+formValidatorForProfile.enableValidation();
+formValidatorForProfile.resetValidaion();
 
 // редактировать профиль
 
@@ -84,31 +92,34 @@ const cardList = new Section(
   elementsTable
 );
 
+// попап добавления карточек
+
+const handleAddForm = new PopupWithForm({
+  popup: ".popup-add",
+  handleFormSubmit: (formData) => {
+    const { cardName: name, cardLink: link } = formData;
+    const newFormData = { name, link };
+    cardList.addItem(createCard(newFormData));
+  },
+});
+
+handleAddForm.setEventListeners();
+
 // отрисовка карточек
 
 cardList.renderItems();
 
 // добавление карточки через форму
+
 function openPopupAdd() {
-  const handleAddForm = new PopupWithForm({
-    popup: ".popup-add",
-    handleFormSubmit: (formData) => {
-      const { cardName: name, cardLink: link } = formData;
-
-      initialCards.push({ name, link });
-
-      cardList.renderItems();
-    },
-  });
   handleAddForm.open();
-  handleAddForm.setEventListeners();
-
-  // валидация формы добавления карточек
-
-  const formValidatorForAdd = new FormValidator(validationConfig, popupAdd);
-  formValidatorForAdd.enableValidation();
-  formValidatorForAdd.resetValidaion();
 }
+
+// валидация формы добавления карточек
+
+const formValidatorForAdd = new FormValidator(validationConfig, popupAdd);
+formValidatorForAdd.enableValidation();
+formValidatorForAdd.resetValidaion();
 
 // открыть форму добавления карточек
 
