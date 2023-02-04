@@ -27,23 +27,24 @@ const newProfileInfo = new UserInfo({
 
 // попап редактирования профиля
 
-const handleProfileFormSubmit = new PopupWithForm({
+const profilePopup = new PopupWithForm({
   popup: ".popup-profile",
   handleFormSubmit: (formData) => {
     newProfileInfo.setUserInfo(formData);
   },
 });
 
-handleProfileFormSubmit.setEventListeners();
+profilePopup.setEventListeners();
 
 // открыть попап редактирования профиля
 
 function openPopupProfile() {
-  handleProfileFormSubmit.open();
+  profilePopup.open();
   newProfileInfo.getUserInfo();
   const infoObject = newProfileInfo.getUserInfo();
 
-  handleProfileFormSubmit.setInputValues(infoObject);
+  profilePopup.setInputValues(infoObject);
+  formValidatorForProfile.resetValidaion();
   // namePopup.value = infoObject.name;
   // descriptionPopup.value = infoObject.description;
 }
@@ -55,7 +56,6 @@ const formValidatorForProfile = new FormValidator(
   popupProfile
 );
 formValidatorForProfile.enableValidation();
-formValidatorForProfile.resetValidaion();
 
 // редактировать профиль
 
@@ -94,7 +94,7 @@ const cardList = new Section(
 
 // попап добавления карточек
 
-const handleAddForm = new PopupWithForm({
+const popupAddForm = new PopupWithForm({
   popup: ".popup-add",
   handleFormSubmit: (formData) => {
     const { cardName: name, cardLink: link } = formData;
@@ -103,23 +103,23 @@ const handleAddForm = new PopupWithForm({
   },
 });
 
-handleAddForm.setEventListeners();
+popupAddForm.setEventListeners();
 
 // отрисовка карточек
 
 cardList.renderItems();
 
-// добавление карточки через форму
+// открыть попап добавления карточек
 
 function openPopupAdd() {
-  handleAddForm.open();
+  popupAddForm.open();
+  formValidatorForAdd.resetValidaion();
 }
 
 // валидация формы добавления карточек
 
 const formValidatorForAdd = new FormValidator(validationConfig, popupAdd);
 formValidatorForAdd.enableValidation();
-formValidatorForAdd.resetValidaion();
 
 // открыть форму добавления карточек
 
