@@ -2,6 +2,7 @@ export class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._saveBtn = document.querySelector(".popup__save-button");
     // Для того чтобы ссылка стала постоянной, нужно "привязать" функцию к контексту this в конструкторе 1 раз с помощью bind.
   }
 
@@ -32,4 +33,10 @@ export class Popup {
       }
     });
   }
+
+  // renderLoading(isLoading) {
+  //   if (isLoading) {
+  //     this._saveBtn.textContent = "Сохранение...";
+  //   }
+  // }
 }

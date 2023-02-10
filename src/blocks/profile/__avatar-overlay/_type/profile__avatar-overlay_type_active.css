@@ -1,5 +1,4 @@
-.popup_opened {
-  /* display: flex; */
+.profile__avatar-overlay_type_active {
   visibility: visible;
   opacity: 1;
 }

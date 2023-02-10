@@ -43,6 +43,7 @@ const nameProfile = document.querySelector(".profile__name");
 const descriptionPopup = popupProfile.querySelector(
   ".popup__item_type_description"
 );
+const avatar = document.querySelector(".profile__avatar");
 const descriptionProfile = document.querySelector(".profile__description");
 const profileForm = popupProfile.querySelector(".popup__container");
 const popups = document.querySelectorAll(".popup");
@@ -58,6 +59,12 @@ const popupAddCloseBtn = popupAdd.querySelector(".popup__close-button");
 const namePopupAdd = popupAdd.querySelector(".popup__item_type_name");
 const linkPopupAdd = popupAdd.querySelector(".popup__item_type_link");
 const addForm = popupAdd.querySelector(".popup__container");
+// попап удаления карточек
+const popupDelete = document.querySelector(".popup-delete");
+const deleteCardBtn = document.querySelector(".elements__delete-button");
+// попап редактирования аватара
+const popupChange = document.querySelector(".popup-change");
+const editAvatarBtn = document.querySelector(".profile__avatar-overlay");
 
 export {
   initialCards,
@@ -81,4 +88,9 @@ export {
   namePopupAdd,
   linkPopupAdd,
   addForm,
+  avatar,
+  popupDelete,
+  deleteCardBtn,
+  popupChange,
+  editAvatarBtn,
 };
