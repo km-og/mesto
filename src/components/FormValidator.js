@@ -29,6 +29,13 @@ class FormValidator {
   // удалить класс с ошибкой
 
   _hideInputError(inputElement) {
+    console.log(inputElement);
+    console.log(`${inputElement.id}`);
+    console.log(`${inputElement.id}-error`);
+    console.log(this._inputSelector);
+    console.log(this._inputList);
+    console.log(this._formElement);
+
     const errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
