@@ -1,11 +1,11 @@
 // import { nameProfile, descriptionProfile } from "../utils/constants.js";
 
 export class UserInfo {
-  constructor({ nameProfile, descriptionProfile }) {
+  constructor({ nameProfile, descriptionProfile, avatarProfile, userId }) {
     this._nameProfile = document.querySelector(nameProfile);
     this._descriptionProfile = document.querySelector(descriptionProfile);
-    this._profileAvatar = document.querySelector(".profile__avatar-box");
-    this._avatarOverlay = document.querySelector(".profile__avatar-overlay");
+    this._avatar = document.querySelector(avatarProfile);
+    this._userId = userId;
   }
 
   getUserInfo() {
@@ -17,21 +17,14 @@ export class UserInfo {
   }
 
   setUserInfo(data) {
-    this._nameProfile.textContent = data.name;
-    this._descriptionProfile.textContent = data.about;
-  }
-
-  _editProfile() {
-    this._avatarOverlay.classList.toggle("profile__avatar-overlay_type_active");
-  }
-
-  setEventListeners() {
-    this._profileAvatar.addEventListener("mouseover", () => {
-      this._editProfile();
-    });
-
-    this._profileAvatar.addEventListener("mouseout", () => {
-      this._editProfile();
-    });
+    if (data.name) {
+      this._nameProfile.textContent = data.name;
+    } else if (data.about) {
+      this._descriptionProfile.textContent = data.about;
+    } else if (data.avatar) {
+      this._avatar.src = data.avatar;
+    } else if (data._id) {
+      this._userId = data._id;
+    }
   }
 }

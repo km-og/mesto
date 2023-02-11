@@ -4,6 +4,7 @@ class Card {
   constructor(
     data,
     templateSelector,
+    userId,
     {
       handleCardClick,
       handleDelete,
@@ -22,7 +23,8 @@ class Card {
     this._likes = data.likes;
     this._owner = data.owner._id;
     this._handlePopupDelete = handlePopupDelete;
-    this._myId = "c074c52e67f04b0ae50ddc4b";
+    this._myId = userId;
+    // this._myId = "c074c52e67f04b0ae50ddc4b";
     this._handleDeleteLike = handleDeleteLike;
   }
 

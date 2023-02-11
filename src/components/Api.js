@@ -4,11 +4,15 @@ export class Api {
     this._headers = headers;
   }
 
-  // содержание запроса
+  // проверка статуса ответа сервера
 
-  // _contentFetch() {
-
-  // }
+  _checkingStatus(response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      return Promise.reject(new Error("Что-то пошло не так..."));
+    }
+  }
 
   // получить данные с сервера
 
@@ -16,15 +20,9 @@ export class Api {
     return fetch(`${this._url}`, {
       method: "GET",
       headers: this._headers,
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(new Error("Что-то пошло не так..."));
-        }
-      })
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      return this._checkingStatus(response);
+    });
   }
 
   // отправить данные на сервер
@@ -34,15 +32,9 @@ export class Api {
       method: methodType,
       headers: this._headers,
       body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(new Error("Что-то пошло не так..."));
-        }
-      })
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      return this._checkingStatus(response);
+    });
   }
 
   // удалить карточку
@@ -51,15 +43,9 @@ export class Api {
     return fetch(`${this._url}/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(new Error("Что-то пошло не так..."));
-        }
-      })
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      return this._checkingStatus(response);
+    });
   }
 
   // поставить лайк
@@ -68,17 +54,10 @@ export class Api {
     return fetch(`${this._url}/${id}/likes`, {
       method: methodType,
       headers: this._headers,
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(new Error("Что-то пошло не так..."));
-        }
-      })
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      return this._checkingStatus(response);
+    });
   }
-
   // обновить аватар
 
   changeAvatar(avatar) {
@@ -86,14 +65,8 @@ export class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(avatar),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(new Error("Что-то пошло не так..."));
-        }
-      })
-      .catch((error) => console.log(error));
+    }).then((response) => {
+      return this._checkingStatus(response);
+    });
   }
 }
