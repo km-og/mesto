@@ -7,9 +7,10 @@
   border-radius: 2px;
   background-size: 22px 22px;
   padding: 14px 73px;
-  margin-left: auto;
+  margin: 35px auto;
+  /* margin-left: auto;
   margin-top: 35px;
-  margin-bottom: 35px;
+  margin-bottom: 35px; */
 }
 
 .profile__add-button:hover {
